@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/itAddTable"
+        android:title="Thêm bàn"
+        />
+    <item
+        android:id="@+id/itAddType"
+        android:title="Thêm loại"
+        />
+    <item
+        android:id="@+id/itAddMenu"
+        android:title="Thêm thực đơn"
+        />
+    <item
+        android:id="@+id/itAddAcc"
+        android:title="Thêm tài khoản"
+        />
+</menu>

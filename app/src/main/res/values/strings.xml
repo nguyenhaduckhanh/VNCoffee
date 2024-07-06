@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">VNCoffee</string>
+    <string name="login">Đăng nhập</string>
+    <string name="logintittle">Đăng <br /> nhập</string>
+    <string name="enter_username">Tên tài khoản</string>
+    <string name="enter_password">Mật khẩu</string>
+    <string name="addtype">Thêm loại</string>
+    <string name="enter_fullname">Họ và tên</string>
+    <string name="enter_phone">SĐT</string>
+    <string name="enter_email">Email</string>
+    <string name="add_sucessful">Thêm thành công!</string>
+    <string name="add_failed">Thêm thất bại!</string>
+    <string name="delete_sucessful">Xóa thành công!</string>
+    <string name="delete_failed">Không thể xóa!</string>
+    <string name="addType">Thêm loại</string>
+    <string name="addMenu">Thêm thực đơn</string>
+    <string name="edit_sucessful">Sửa thành công!</string>
+    <string name="edit_failed">Lỗi khi sửa!</string>
+    <string name="not_empty">Không được bỏ trống</string>
+    <string name="edittype">Sửa loại</string>
+    <string name="choseimg">Chọn ảnh</string>
+</resources>

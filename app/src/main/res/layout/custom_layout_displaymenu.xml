@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/img_custommenu_HinhMon"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/cafe_americano"
+            android:scaleType="fitXY"
+            />
+        <TextView
+            android:id="@+id/txt_custommenu_TenMon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@color/black50"
+            android:text="Cafe"
+            android:layout_gravity="bottom"
+            android:textSize="20sp"
+            android:padding="5dp"/>
+
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_custommenu_HinhMon"
+        android:background="#3d1d0d"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+
+        <TextView
+            android:id="@+id/txt_custommenu_SoLuong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingRight="20px"
+            android:text="Số lượng: "
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_custommenu_SoLuong"
+        android:background="#3d1d0d"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        >
+        <TextView
+            android:id="@+id/txt_custommenu_GiaTien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10000 VND"
+            android:textStyle="bold"
+            android:padding="3dp"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>
