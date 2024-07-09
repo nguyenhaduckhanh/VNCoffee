@@ -73,12 +73,12 @@ public class ThucdonDAO {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             ThucdonDTO thucdonDTO = new ThucdonDTO();
-            thucdonDTO.setANH(cursor.getBlob(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_ANH)));
-            thucdonDTO.setTENMON(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_TENMON)));
-            thucdonDTO.setMALOAI(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_MALOAI)));
-            thucdonDTO.setMAMON(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_MAMON)));
-            thucdonDTO.setGIATIEN(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_GIATIEN)));
-            thucdonDTO.setSOLUONG(cursor.getInt((cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_SOLUONG))));
+            thucdonDTO.setANH(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_ANH)));
+            thucdonDTO.setTENMON(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_TENMON)));
+            thucdonDTO.setMALOAI(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_MALOAI)));
+            thucdonDTO.setMAMON(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_MAMON)));
+            thucdonDTO.setGIATIEN(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_GIATIEN)));
+            thucdonDTO.setSOLUONG(cursor.getInt((cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_SOLUONG))));
             thucdonDTOList.add(thucdonDTO);
 
             cursor.moveToNext();
@@ -92,12 +92,12 @@ public class ThucdonDAO {
         Cursor cursor = database.rawQuery(query,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-            thucdonDTO.setANH(cursor.getBlob(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_ANH)));
-            thucdonDTO.setTENMON(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_TENMON)));
-            thucdonDTO.setMALOAI(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_MALOAI)));
-            thucdonDTO.setMAMON(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_MAMON)));
-            thucdonDTO.setGIATIEN(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_GIATIEN)));
-            thucdonDTO.setSOLUONG(cursor.getInt((cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_SOLUONG))));
+            thucdonDTO.setANH(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_ANH)));
+            thucdonDTO.setTENMON(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_TENMON)));
+            thucdonDTO.setMALOAI(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_MALOAI)));
+            thucdonDTO.setMAMON(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_MAMON)));
+            thucdonDTO.setGIATIEN(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_GIATIEN)));
+            thucdonDTO.setSOLUONG(cursor.getInt((cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_SOLUONG))));
 
             cursor.moveToNext();
         }
@@ -110,7 +110,7 @@ public class ThucdonDAO {
                 " WHERE " +CreateDatabase.TBL_THUCDON_MAMON + " = " + mamon;
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToFirst()) {
-            soluong = cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_SOLUONG));
+            soluong = cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_SOLUONG));
         }
         cursor.close();
         return soluong;
@@ -131,7 +131,7 @@ public class ThucdonDAO {
 
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToFirst()) {
-            gia = cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_GIATIEN));
+            gia = cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_GIATIEN));
         }
         cursor.close();
         return gia;
@@ -154,10 +154,10 @@ public class ThucdonDAO {
         if (cursor.moveToFirst()) {
             do {
                 ThucdonDTO thucdonDTO = new ThucdonDTO();
-                thucdonDTO.setMAMON(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_MAMON)));
-                thucdonDTO.setTENMON(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_TENMON)));
-                thucdonDTO.setSOLUONG(cursor.getInt(cursor.getColumnIndex("TotalSold")));
-                thucdonDTO.setANH(cursor.getBlob(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_ANH))); // Lấy ảnh từ cursor
+                thucdonDTO.setMAMON(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_MAMON)));
+                thucdonDTO.setTENMON(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_TENMON)));
+                thucdonDTO.setSOLUONG(cursor.getInt(cursor.getColumnIndexOrThrow("TotalSold")));
+                thucdonDTO.setANH(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_ANH))); // Lấy ảnh từ cursor
                 productList.add(thucdonDTO);
             } while (cursor.moveToNext());
         }
@@ -199,10 +199,10 @@ public class ThucdonDAO {
             if (cursor.moveToFirst()) {
                 do {
                     ThucdonDTO thucdonDTO = new ThucdonDTO();
-                    thucdonDTO.setMAMON(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_MAMON)));
-                    thucdonDTO.setTENMON(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_TENMON)));
-                    thucdonDTO.setSOLUONG(cursor.getInt(cursor.getColumnIndex("TotalSold")));
-                    thucdonDTO.setANH(cursor.getBlob(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_ANH)));
+                    thucdonDTO.setMAMON(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_MAMON)));
+                    thucdonDTO.setTENMON(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_TENMON)));
+                    thucdonDTO.setSOLUONG(cursor.getInt(cursor.getColumnIndexOrThrow("TotalSold")));
+                    thucdonDTO.setANH(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_ANH)));
                     productList.add(thucdonDTO);
                 } while (cursor.moveToNext());
             }

@@ -65,8 +65,8 @@ public class AdapterDisplayMenu extends BaseAdapter {
 
         //lấy hình ảnh
         if(thucdonDTO.getANH() != null){
-            byte[] menuimage = thucdonDTO.getANH();
-            Bitmap bitmap = BitmapFactory.decodeByteArray(menuimage,0,menuimage.length);
+            String menuimage = thucdonDTO.getANH();
+            Bitmap bitmap = BitmapFactory.decodeFile(menuimage);
             viewholder.img_custommenu_HinhMon.setImageBitmap(bitmap);
         }else {
             viewholder.img_custommenu_HinhMon.setImageResource(R.drawable.cafe_americano);

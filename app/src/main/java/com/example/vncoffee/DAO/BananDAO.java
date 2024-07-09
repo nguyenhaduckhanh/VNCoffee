@@ -64,8 +64,8 @@ public class BananDAO {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             BananDTO banAnDTO = new BananDTO();
-            banAnDTO.setMABAN(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_BAN_MABAN)));
-            banAnDTO.setTENBAN(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_BAN_TENBAN)));
+            banAnDTO.setMABAN(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_BAN_MABAN)));
+            banAnDTO.setTENBAN(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_BAN_TENBAN)));
 
             banAnDTOList.add(banAnDTO);
             cursor.moveToNext();
@@ -79,7 +79,7 @@ public class BananDAO {
         Cursor cursor = database.rawQuery(query,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-            tinhtrang = cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_BAN_TINHTRANG));
+            tinhtrang = cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_BAN_TINHTRANG));
             cursor.moveToNext();
         }
 
@@ -104,7 +104,7 @@ public class BananDAO {
         Cursor cursor = database.rawQuery(query,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-            tenban = cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_BAN_TENBAN));
+            tenban = cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_BAN_TENBAN));
             cursor.moveToNext();
         }
 
@@ -117,8 +117,8 @@ public class BananDAO {
         Cursor cursor = database.rawQuery(query,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-           bananDTO.setMABAN(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_BAN_MABAN)));
-           bananDTO.setTENBAN(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_BAN_TENBAN)));
+           bananDTO.setMABAN(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_BAN_MABAN)));
+           bananDTO.setTENBAN(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_BAN_TENBAN)));
            cursor.moveToNext();
         }
 

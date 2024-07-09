@@ -2,14 +2,13 @@ package com.example.vncoffee.DTO;
 
 public class ThucdonDTO {
     int MAMON, MALOAI,SOLUONG;
-    String TENMON, GIATIEN;
-    byte[] ANH;
+    String TENMON, GIATIEN, ANH;
 
-    public byte[] getANH() {
+    public String getANH() {
         return ANH;
     }
 
-    public void setANH(byte[] ANH) {
+    public void setANH(String ANH) {
         this.ANH = ANH;
     }
 

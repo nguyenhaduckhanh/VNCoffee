@@ -28,7 +28,9 @@ import com.example.vncoffee.DTO.ThucdonDTO;
 import com.example.vncoffee.R;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 
 public class AddMenuActivity extends AppCompatActivity implements View.OnClickListener{
@@ -97,9 +99,11 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
             TXTL_addmenu_GiaTien.getEditText().setText(thucdonDTO.getGIATIEN());
             TXTL_addmenu_SoLuong.getEditText().setText(String.valueOf(thucdonDTO.getSOLUONG()));
 
-            byte[] menuimage = thucdonDTO.getANH();
-            Bitmap bitmap = BitmapFactory.decodeByteArray(menuimage,0,menuimage.length);
+            String menuimage = thucdonDTO.getANH();
+            Bitmap bitmap = BitmapFactory.decodeFile(menuimage);
             IMG_addmenu_ThemHinh.setImageBitmap(bitmap);
+
+
             BTN_addmenu_ThemMon.setText("Sửa món");
         }
 
@@ -142,7 +146,7 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
                 thucdonDTO.setTENMON(sTenMon);
                 thucdonDTO.setGIATIEN(sGiaTien);
                 thucdonDTO.setSOLUONG(sSoLuong);
-                thucdonDTO.setANH(imageViewtoByte(IMG_addmenu_ThemHinh));
+                thucdonDTO.setANH(saveImageToInternalStorage(((BitmapDrawable) IMG_addmenu_ThemHinh.getDrawable()).getBitmap()));
                 if(mamon!= 0){
                     ktra = thucdonDAO.SuaMon(thucdonDTO,mamon);
                     chucnang = "suamon";
@@ -162,13 +166,19 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    //Chuyển ảnh bitmap về mảng byte lưu vào csdl
-    private byte[] imageViewtoByte(ImageView imageView){
-        Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
-        byte[] byteArray = stream.toByteArray();
-        return byteArray;
+    //Chuyển ảnh bitmap, đưa vào thư mục và gọi đường dẫn
+    private String saveImageToInternalStorage(Bitmap bitmap) {
+        File directory = getFilesDir();
+        String fileName = "IMG_" + System.currentTimeMillis() + ".png";
+        File file = new File(directory, fileName);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return file.getAbsolutePath();
     }
 
     //kiểm tra nhập
@@ -187,10 +197,11 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
     private boolean validateName(){
         String val = TXTL_addmenu_TenMon.getEditText().getText().toString().trim();
         ThucdonDAO thucdonDAO = new ThucdonDAO(getApplicationContext());
+        ThucdonDTO thucdonDTO = thucdonDAO.LayMonTheoMa(mamon);
         if(val.isEmpty()){
             TXTL_addmenu_TenMon.setError(getResources().getString(R.string.not_empty));
             return false;
-        } else if (thucdonDAO.KiemTraTenMon(val)) {
+        } else if (thucdonDAO != null && !val.equals(thucdonDTO.getTENMON()) && thucdonDAO.KiemTraTenMon(val)) {
             TXTL_addmenu_TenMon.setError("Tên món đã tồn tại!");
             return false;
         } else {

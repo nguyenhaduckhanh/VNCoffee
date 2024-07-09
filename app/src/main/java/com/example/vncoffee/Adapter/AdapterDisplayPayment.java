@@ -76,10 +76,14 @@ public class AdapterDisplayPayment extends BaseAdapter {
         viewHolder.txt_custompayment_SoLuong.setText(String.valueOf(thanhtoanDTO.getSOLUONGDAT()));
         viewHolder.txt_custompayment_GiaTien.setText(String.valueOf(thanhtoanDTO.getGIATIEN())+" đ");
 
-        byte[] paymentimg = thanhtoanDTO.getANH();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(paymentimg,0,paymentimg.length);
-        viewHolder.img_custompayment_HinhMon.setImageBitmap(bitmap);
-
+        if (thanhtoanDTO.getANH() != null) {
+            String paymentimage = thanhtoanDTO.getANH();
+            Bitmap bitmap = BitmapFactory.decodeFile(paymentimage);
+            viewHolder.img_custompayment_HinhMon.setImageBitmap(bitmap);
+        }
+        else {
+            viewHolder.img_custompayment_HinhMon.setImageResource(R.drawable.cafe_americano);
+        }
 
         return view;
     }

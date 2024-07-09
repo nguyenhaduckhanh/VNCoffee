@@ -55,7 +55,7 @@ public class TaikhoanDAO {
         Cursor cursor = database.rawQuery(query,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-            matk = cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_MATK)) ;
+            matk = cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_MATK)) ;
             cursor.moveToNext();
         }
         return matk;
@@ -81,15 +81,15 @@ public class TaikhoanDAO {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             TaikhoanDTO TaikhoanDTO = new TaikhoanDTO();
-            TaikhoanDTO.setHOTEN(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_HOTEN)));
-            TaikhoanDTO.setEMAIL(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_EMAIL)));
-            TaikhoanDTO.setGIOITINH(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_GIOITINH)));
-            TaikhoanDTO.setNGAYSINH(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_NGAYSINH)));
-            TaikhoanDTO.setSDT(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_SDT)));
-            TaikhoanDTO.setTENDN(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_TENDN)));
-            TaikhoanDTO.setMATKHAU(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_MATKHAU)));
-            TaikhoanDTO.setMATK(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_MATK)));
-            TaikhoanDTO.setMAQUYEN(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_MAQUYEN)));
+            TaikhoanDTO.setHOTEN(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_HOTEN)));
+            TaikhoanDTO.setEMAIL(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_EMAIL)));
+            TaikhoanDTO.setGIOITINH(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_GIOITINH)));
+            TaikhoanDTO.setNGAYSINH(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_NGAYSINH)));
+            TaikhoanDTO.setSDT(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_SDT)));
+            TaikhoanDTO.setTENDN(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_TENDN)));
+            TaikhoanDTO.setMATKHAU(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_MATKHAU)));
+            TaikhoanDTO.setMATK(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_MATK)));
+            TaikhoanDTO.setMAQUYEN(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_MAQUYEN)));
 
             TaikhoanDTOS.add(TaikhoanDTO);
             cursor.moveToNext();
@@ -118,15 +118,15 @@ public class TaikhoanDAO {
         Cursor cursor = database.rawQuery(query,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-            TaikhoanDTO.setHOTEN(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_HOTEN)));
-            TaikhoanDTO.setEMAIL(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_EMAIL)));
-            TaikhoanDTO.setGIOITINH(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_GIOITINH)));
-            TaikhoanDTO.setNGAYSINH(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_NGAYSINH)));
-            TaikhoanDTO.setSDT(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_SDT)));
-            TaikhoanDTO.setTENDN(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_TENDN)));
-            TaikhoanDTO.setMATKHAU(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_MATKHAU)));
-            TaikhoanDTO.setMATK(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_MATK)));
-            TaikhoanDTO.setMAQUYEN(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_MAQUYEN)));
+            TaikhoanDTO.setHOTEN(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_HOTEN)));
+            TaikhoanDTO.setEMAIL(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_EMAIL)));
+            TaikhoanDTO.setGIOITINH(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_GIOITINH)));
+            TaikhoanDTO.setNGAYSINH(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_NGAYSINH)));
+            TaikhoanDTO.setSDT(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_SDT)));
+            TaikhoanDTO.setTENDN(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_TENDN)));
+            TaikhoanDTO.setMATKHAU(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_MATKHAU)));
+            TaikhoanDTO.setMATK(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_MATK)));
+            TaikhoanDTO.setMAQUYEN(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_MAQUYEN)));
 
             cursor.moveToNext();
         }
@@ -139,7 +139,7 @@ public class TaikhoanDAO {
         Cursor cursor = database.rawQuery(query,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-            maquyen = cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_MAQUYEN));
+            maquyen = cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_MAQUYEN));
 
             cursor.moveToNext();
         }
@@ -166,7 +166,7 @@ public class TaikhoanDAO {
         if (cursor != null) {
             try {
                 if (cursor.moveToFirst()) {
-                    matkhau = cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_TAIKHOAN_MATKHAU));
+                    matkhau = cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_TAIKHOAN_MATKHAU));
                 }
             } finally {
                 cursor.close();

@@ -28,12 +28,12 @@ public class ThanhtoanDAO {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             ThanhtoanDTO thanhToanDTO = new ThanhtoanDTO();
-            thanhToanDTO.setSOLUONGDAT(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_CHITIETDONHANG_SOLUONGDAT)));
-            thanhToanDTO.setGIATIEN(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_GIATIEN)));
-            thanhToanDTO.setTENMON(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_TENMON)));
-            thanhToanDTO.setANH(cursor.getBlob(cursor.getColumnIndex(CreateDatabase.TBL_THUCDON_ANH)));
-            thanhToanDTO.setMAMON(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_CHITIETDONHANG_MAMON)));
-            thanhToanDTO.setMADON(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_CHITIETDONHANG_MADON)));
+            thanhToanDTO.setSOLUONGDAT(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_CHITIETDONHANG_SOLUONGDAT)));
+            thanhToanDTO.setGIATIEN(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_GIATIEN)));
+            thanhToanDTO.setTENMON(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_TENMON)));
+            thanhToanDTO.setANH(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_THUCDON_ANH)));
+            thanhToanDTO.setMAMON(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_CHITIETDONHANG_MAMON)));
+            thanhToanDTO.setMADON(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_CHITIETDONHANG_MADON)));
             thanhToanDTOS.add(thanhToanDTO);
 
             cursor.moveToNext();

@@ -61,9 +61,9 @@ public class LoaimonDAO {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             LoaimonDTO loaiMonDTO = new LoaimonDTO();
-            loaiMonDTO.setMALOAI(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_LOAIMON_MALOAI)));
-            loaiMonDTO.setTENLOAI(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_LOAIMON_TENLOAI)));
-            loaiMonDTO.setANH(cursor.getBlob(cursor.getColumnIndex(CreateDatabase.TBL_LOAIMON_ANH)));
+            loaiMonDTO.setMALOAI(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_LOAIMON_MALOAI)));
+            loaiMonDTO.setTENLOAI(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_LOAIMON_TENLOAI)));
+            loaiMonDTO.setANH(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_LOAIMON_ANH)));
             loaiMonDTOList.add(loaiMonDTO);
 
             cursor.moveToNext();
@@ -77,9 +77,9 @@ public class LoaimonDAO {
         Cursor cursor = database.rawQuery(query,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-            loaiMonDTO.setMALOAI(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_LOAIMON_MALOAI)));
-            loaiMonDTO.setTENLOAI(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_LOAIMON_TENLOAI)));
-            loaiMonDTO.setANH(cursor.getBlob(cursor.getColumnIndex(CreateDatabase.TBL_LOAIMON_ANH)));
+            loaiMonDTO.setMALOAI(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_LOAIMON_MALOAI)));
+            loaiMonDTO.setTENLOAI(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_LOAIMON_TENLOAI)));
+            loaiMonDTO.setANH(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_LOAIMON_ANH)));
 
             cursor.moveToNext();
         }

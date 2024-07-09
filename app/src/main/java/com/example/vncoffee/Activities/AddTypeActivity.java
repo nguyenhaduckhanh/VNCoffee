@@ -26,7 +26,9 @@ import com.example.vncoffee.DAO.LoaimonDAO;
 import com.example.vncoffee.DTO.LoaimonDTO;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 
 public class AddTypeActivity extends AppCompatActivity implements View.OnClickListener{
@@ -83,8 +85,9 @@ public class AddTypeActivity extends AppCompatActivity implements View.OnClickLi
             //Hiển thị lại thông tin từ csdl
             TXTL_addtype_TenLoai.getEditText().setText(loaiMonDTO.getTENLOAI());
 
-            byte[] typeimage = loaiMonDTO.getANH();
-            Bitmap bitmap = BitmapFactory.decodeByteArray(typeimage,0,typeimage.length);
+
+            String typeimage = loaiMonDTO.getANH();
+            Bitmap bitmap = BitmapFactory.decodeFile(typeimage);
             IMG_addtype_ThemHinh.setImageBitmap(bitmap);
 
             BTN_addtype_TaoLoai.setText("Sửa loại");
@@ -122,7 +125,7 @@ public class AddTypeActivity extends AppCompatActivity implements View.OnClickLi
                 String sTenLoai = TXTL_addtype_TenLoai.getEditText().getText().toString();
                 LoaimonDTO loaiMonDTO = new LoaimonDTO();
                 loaiMonDTO.setTENLOAI(sTenLoai);
-                loaiMonDTO.setANH(imageViewtoByte(IMG_addtype_ThemHinh));
+                loaiMonDTO.setANH(saveImageToInternalStorage(((BitmapDrawable) IMG_addtype_ThemHinh.getDrawable()).getBitmap()));
                 if(maloai != 0){
                     ktra = loaiMonDAO.SuaLoaiMon(loaiMonDTO,maloai);
                     chucnang = "sualoai";
@@ -142,14 +145,21 @@ public class AddTypeActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    //Chuyển ảnh bitmap về mảng byte lưu vào csdl
-    private byte[] imageViewtoByte(ImageView imageView){
-        Bitmap bitmap = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
-        byte[] byteArray = stream.toByteArray();
-        return byteArray;
+    //Chuyển ảnh bitmap, đưa vào thư mục và gọi đường dẫn
+    private String saveImageToInternalStorage(Bitmap bitmap) {
+        File directory = getFilesDir();
+        String fileName = "IMG_" + System.currentTimeMillis() + ".png";
+        File file = new File(directory, fileName);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return file.getAbsolutePath();
     }
+
 
     //kiểm tra nhập
     private boolean validateImage(){
@@ -167,10 +177,11 @@ public class AddTypeActivity extends AppCompatActivity implements View.OnClickLi
     private boolean validateName(){
         String val = TXTL_addtype_TenLoai.getEditText().getText().toString().trim();
         LoaimonDAO loaimonDAO = new LoaimonDAO(getApplicationContext());
+        LoaimonDTO loaimonDTO = loaimonDAO.LayLoaiMonTheoMa(maloai);
         if(val.isEmpty()){
             TXTL_addtype_TenLoai.setError(getResources().getString(R.string.not_empty));
             return false;
-        } else if (loaimonDAO.KiemTraTenLoai(val)) {
+        } else if (loaimonDAO != null && !val.equals(loaimonDTO.getTENLOAI()) && loaimonDAO.KiemTraTenLoai(val)) {
             TXTL_addtype_TenLoai.setError("Tên loại đã tồn tại!");
             return false;
         } else {

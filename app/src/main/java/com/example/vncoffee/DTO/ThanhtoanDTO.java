@@ -1,9 +1,8 @@
 package com.example.vncoffee.DTO;
 
 public class ThanhtoanDTO {
-    String TENMON;
+    String TENMON, ANH;
     int SOLUONGDAT, GIATIEN, MAMON, MADON;
-    byte[] ANH;
 
     public int getMAMON() {
         return MAMON;
@@ -21,11 +20,11 @@ public class ThanhtoanDTO {
         this.MADON = MADON;
     }
 
-    public byte[] getANH() {
+    public String getANH() {
         return ANH;
     }
 
-    public void setANH(byte[] ANH) {
+    public void setANH(String ANH) {
         this.ANH = ANH;
     }
 

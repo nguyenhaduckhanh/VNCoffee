@@ -61,14 +61,20 @@ public class AdapterDisplayProductStatistic extends BaseAdapter {
         viewHolder.txt_customproduct_TenMon.setText(thucdonDTO.getTENMON());
         viewHolder.txt_customproduct_SoLuong.setText(String.valueOf(thucdonDTO.getSOLUONG()));
 
-        byte[] productimg = thucdonDTO.getANH();
-        if (productimg != null && productimg.length > 0) {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(productimg, 0, productimg.length);
-            viewHolder.img_customproduct_HinhMon.setImageBitmap(bitmap);
+        String productImgPath = thucdonDTO.getANH();
+        if (productImgPath != null && !productImgPath.isEmpty()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(productImgPath);
+            if (bitmap != null) {
+                viewHolder.img_customproduct_HinhMon.setImageBitmap(bitmap);
+            } else {
+                // Đặt một hình ảnh mặc định hoặc xử lý trường hợp không thể tạo bitmap từ đường dẫn
+                viewHolder.img_customproduct_HinhMon.setImageResource(R.drawable.cafe_americano); // Thay thế default_image bằng hình ảnh mặc định
+            }
         } else {
             // Đặt một hình ảnh mặc định hoặc xử lý trường hợp không có ảnh
-            viewHolder.img_customproduct_HinhMon.setImageResource(R.drawable.cafe_americano); // Thay thế default_image bằng hình ảnh mặc định của bạn
+            viewHolder.img_customproduct_HinhMon.setImageResource(R.drawable.cafe_americano); // Thay thế default_image bằng hình ảnh mặc định
         }
+
 
         return convertView;
     }

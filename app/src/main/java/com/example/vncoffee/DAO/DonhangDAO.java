@@ -42,12 +42,12 @@ public class DonhangDAO {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             DonhangDTO donhangDTO = new DonhangDTO();
-            donhangDTO.setMADON(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MADON)));
-            donhangDTO.setMABAN(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MABAN)));
-            donhangDTO.setTONGTIEN(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_TONGTIEN)));
-            donhangDTO.setTINHTRANG(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_TINHTRANG)));
-            donhangDTO.setNGAYTAO(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_NGAYTAO)));
-            donhangDTO.setMATK(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MATK)));
+            donhangDTO.setMADON(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MADON)));
+            donhangDTO.setMABAN(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MABAN)));
+            donhangDTO.setTONGTIEN(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_TONGTIEN)));
+            donhangDTO.setTINHTRANG(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_TINHTRANG)));
+            donhangDTO.setNGAYTAO(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_NGAYTAO)));
+            donhangDTO.setMATK(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MATK)));
             donhangDTOS.add(donhangDTO);
 
             cursor.moveToNext();
@@ -62,12 +62,12 @@ public class DonhangDAO {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             DonhangDTO donhangDTO = new DonhangDTO();
-            donhangDTO.setMADON(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MADON)));
-            donhangDTO.setMABAN(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MABAN)));
-            donhangDTO.setTONGTIEN(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_TONGTIEN)));
-            donhangDTO.setTINHTRANG(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_TINHTRANG)));
-            donhangDTO.setNGAYTAO(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_NGAYTAO)));
-            donhangDTO.setMATK(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MATK)));
+            donhangDTO.setMADON(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MADON)));
+            donhangDTO.setMABAN(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MABAN)));
+            donhangDTO.setTONGTIEN(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_TONGTIEN)));
+            donhangDTO.setTINHTRANG(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_TINHTRANG)));
+            donhangDTO.setNGAYTAO(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_NGAYTAO)));
+            donhangDTO.setMATK(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MATK)));
             donhangDTOS.add(donhangDTO);
 
             cursor.moveToNext();
@@ -82,12 +82,12 @@ public class DonhangDAO {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
             DonhangDTO donhangDTO = new DonhangDTO();
-            donhangDTO.setMADON(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MADON)));
-            donhangDTO.setMABAN(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MABAN)));
-            donhangDTO.setTONGTIEN(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_TONGTIEN)));
-            donhangDTO.setTINHTRANG(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_TINHTRANG)));
-            donhangDTO.setNGAYTAO(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_NGAYTAO)));
-            donhangDTO.setMATK(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MATK)));
+            donhangDTO.setMADON(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MADON)));
+            donhangDTO.setMABAN(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MABAN)));
+            donhangDTO.setTONGTIEN(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_TONGTIEN)));
+            donhangDTO.setTINHTRANG(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_TINHTRANG)));
+            donhangDTO.setNGAYTAO(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_NGAYTAO)));
+            donhangDTO.setMATK(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MATK)));
             donhangDTOS.add(donhangDTO);
 
             cursor.moveToNext();
@@ -102,7 +102,7 @@ public class DonhangDAO {
         Cursor cursor = database.rawQuery(query,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-            magoimon = cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MADON));
+            magoimon = cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MADON));
 
             cursor.moveToNext();
         }
@@ -131,7 +131,7 @@ public class DonhangDAO {
 
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToFirst()) {
-            tongtien = cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_TONGTIEN));
+            tongtien = cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_TONGTIEN));
         }
         cursor.close();
         return tongtien;
@@ -167,12 +167,12 @@ public class DonhangDAO {
             if (cursor.moveToFirst()) {
                 do {
                     DonhangDTO donhangDTO = new DonhangDTO();
-                    donhangDTO.setMADON(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MADON)));
-                    donhangDTO.setMABAN(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MABAN)));
-                    donhangDTO.setTONGTIEN(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_TONGTIEN)));
-                    donhangDTO.setTINHTRANG(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_TINHTRANG)));
-                    donhangDTO.setNGAYTAO(cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_NGAYTAO)));
-                    donhangDTO.setMATK(cursor.getInt(cursor.getColumnIndex(CreateDatabase.TBL_DONHANG_MATK)));
+                    donhangDTO.setMADON(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MADON)));
+                    donhangDTO.setMABAN(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MABAN)));
+                    donhangDTO.setTONGTIEN(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_TONGTIEN)));
+                    donhangDTO.setTINHTRANG(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_TINHTRANG)));
+                    donhangDTO.setNGAYTAO(cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_NGAYTAO)));
+                    donhangDTO.setMATK(cursor.getInt(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_DONHANG_MATK)));
                     donhangList.add(donhangDTO);
                 } while (cursor.moveToNext());
             }

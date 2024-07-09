@@ -29,7 +29,7 @@ public class QuyenDAO {
         Cursor cursor = database.rawQuery(query,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
-            tenquyen = cursor.getString(cursor.getColumnIndex(CreateDatabase.TBL_QUYEN_TENQUYEN));
+            tenquyen = cursor.getString(cursor.getColumnIndexOrThrow(CreateDatabase.TBL_QUYEN_TENQUYEN));
             cursor.moveToNext();
         }
         return tenquyen;

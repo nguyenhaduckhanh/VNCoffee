@@ -38,10 +38,16 @@ public class AdapterRecycleViewType extends RecyclerView.Adapter<AdapterRecycleV
     @Override
     public void onBindViewHolder(AdapterRecycleViewType.ViewHolder holder, int position) {
         LoaimonDTO loaiMonDTO = loaiMonDTOList.get(position);
-        holder.txt_customcategory_TenLoai.setText(loaiMonDTO.getTENLOAI());
-        byte[] categoryimage = loaiMonDTO.getANH();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(categoryimage,0,categoryimage.length);
-        holder.img_customcategory_HinhLoai.setImageBitmap(bitmap);
+        holder.txt_customtype_TenLoai.setText(loaiMonDTO.getTENLOAI());
+
+        if (loaiMonDTO.getANH() != null) {
+            String typeimage = loaiMonDTO.getANH();
+            Bitmap bitmap = BitmapFactory.decodeFile(typeimage);
+            holder.img_customtype_HinhLoai.setImageBitmap(bitmap);
+        }
+        else {
+            holder.img_customtype_HinhLoai.setImageResource(R.drawable.espresso);
+        }
     }
 
     @Override
@@ -51,13 +57,13 @@ public class AdapterRecycleViewType extends RecyclerView.Adapter<AdapterRecycleV
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView txt_customcategory_TenLoai;
-        ImageView img_customcategory_HinhLoai;
+        TextView txt_customtype_TenLoai;
+        ImageView img_customtype_HinhLoai;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
-            txt_customcategory_TenLoai = itemView.findViewById(R.id.txt_customtype_TenLoai);
-            img_customcategory_HinhLoai = itemView.findViewById(R.id.img_customtype_HinhLoai);
+            txt_customtype_TenLoai = itemView.findViewById(R.id.txt_customtype_TenLoai);
+            img_customtype_HinhLoai = itemView.findViewById(R.id.img_customtype_HinhLoai);
         }
     }
 

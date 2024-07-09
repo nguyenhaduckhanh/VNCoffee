@@ -61,10 +61,14 @@ public class AdapterDisplayType extends BaseAdapter {
 
         viewHolder.txt_customtype_TenLoai.setText(loaiMonDTO.getTENLOAI());
 
-        byte[] categoryimage = loaiMonDTO.getANH();
-        Bitmap bitmap = BitmapFactory.decodeByteArray(categoryimage,0,categoryimage.length);
-        viewHolder.img_customtype_HinhLoai.setImageBitmap(bitmap);
-
+        if (loaiMonDTO.getANH() != null) {
+            String typeimage = loaiMonDTO.getANH();
+            Bitmap bitmap = BitmapFactory.decodeFile(typeimage);
+            viewHolder.img_customtype_HinhLoai.setImageBitmap(bitmap);
+        }
+        else {
+            viewHolder.img_customtype_HinhLoai.setImageResource(R.drawable.espresso);
+        }
         return view;
     }
 

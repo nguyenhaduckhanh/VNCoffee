@@ -30,7 +30,7 @@ public class AddAccActivity extends AppCompatActivity implements View.OnClickLis
                     "$");
 
     ImageView IMG_addacc_back;
-    TextView TXT_addacc_title;
+    TextView TXT_addacc_title, TXT_addacc_Permission;
     TextInputLayout TXTL_addacc_HoVaTen, TXTL_addacc_TenDN, TXTL_addacc_Email, TXTL_addacc_SDT, TXTL_addacc_MatKhau;
     RadioGroup RG_addacc_GioiTinh,rg_addacc_Quyen;
     RadioButton RD_addacc_Nam,RD_addacc_Nu,rd_addacc_QuanLy,rd_addacc_NhanVien;
@@ -48,6 +48,7 @@ public class AddAccActivity extends AppCompatActivity implements View.OnClickLis
 
         //region Lấy đối tượng trong view
         TXT_addacc_title = (TextView)findViewById(R.id.txt_addacc_title);
+        TXT_addacc_Permission= (TextView)findViewById(R.id.txt_addacc_Permission);
         IMG_addacc_back = (ImageView)findViewById(R.id.img_addacc_back);
         TXTL_addacc_HoVaTen = (TextInputLayout)findViewById(R.id.txtl_addacc_HoVaTen);
         TXTL_addacc_TenDN = (TextInputLayout)findViewById(R.id.txtl_addacc_TenDN);
@@ -90,7 +91,13 @@ public class AddAccActivity extends AppCompatActivity implements View.OnClickLis
                 RD_addacc_Nu.setChecked(true);
             }
 
-            if(taikhoanDTO.getMAQUYEN() == 1){
+            if (matk == 1){
+                TXT_addacc_Permission.setVisibility(View.INVISIBLE);
+                rd_addacc_NhanVien.setVisibility(View.INVISIBLE);
+                rd_addacc_QuanLy.setVisibility(View.INVISIBLE);
+                rd_addacc_QuanLy.setChecked(true);
+            }
+            else if(taikhoanDTO.getMAQUYEN() == 1){
                 rd_addacc_QuanLy.setChecked(true);
             }else {
                 rd_addacc_NhanVien.setChecked(true);
@@ -192,6 +199,7 @@ public class AddAccActivity extends AppCompatActivity implements View.OnClickLis
         String val = TXTL_addacc_TenDN.getEditText().getText().toString().trim();
         String checkspaces = "\\A\\w{1,50}\\z";
         TaikhoanDAO taikhoanDAO = new TaikhoanDAO(getApplicationContext());
+        TaikhoanDTO taikhoanDTO = taikhoanDAO.LayTKTheoMa(matk);
 
         if(val.isEmpty()){
             TXTL_addacc_TenDN.setError(getResources().getString(R.string.not_empty));
@@ -202,7 +210,7 @@ public class AddAccActivity extends AppCompatActivity implements View.OnClickLis
         }else if(!val.matches(checkspaces)){
             TXTL_addacc_TenDN.setError("Không được cách chữ!");
             return false;
-        } else if (taikhoanDAO.KiemTraTenDN(val)) {
+        } else if (taikhoanDAO != null && !val.equals(taikhoanDTO.getTENDN()) && taikhoanDAO.KiemTraTenDN(val)) {
             TXTL_addacc_TenDN.setError("Tên đăng nhập đã tồn tại!");
             return false;
         } else {
@@ -216,6 +224,7 @@ public class AddAccActivity extends AppCompatActivity implements View.OnClickLis
         String val = TXTL_addacc_Email.getEditText().getText().toString().trim();
         String checkspaces = "[a-zA-Z0-9._-]+@[a-z]+.+[a-z]+";
         TaikhoanDAO taikhoanDAO = new TaikhoanDAO(getApplicationContext());
+        TaikhoanDTO taikhoanDTO = taikhoanDAO.LayTKTheoMa(matk);
 
         if(val.isEmpty()){
             TXTL_addacc_Email.setError(getResources().getString(R.string.not_empty));
@@ -223,7 +232,7 @@ public class AddAccActivity extends AppCompatActivity implements View.OnClickLis
         }else if(!val.matches(checkspaces)){
             TXTL_addacc_Email.setError("Email không hợp lệ!");
             return false;
-        } else if (taikhoanDAO.KiemTraEmail(val)) {
+        } else if (taikhoanDAO != null && !val.equals(taikhoanDTO.getEMAIL()) && taikhoanDAO.KiemTraEmail(val)) {
             TXTL_addacc_Email.setError("Email đã tồn tại!");
             return false;
         } else {
@@ -236,6 +245,7 @@ public class AddAccActivity extends AppCompatActivity implements View.OnClickLis
     private boolean validatePhone(){
         String val = TXTL_addacc_SDT.getEditText().getText().toString().trim();
         TaikhoanDAO taikhoanDAO = new TaikhoanDAO(getApplicationContext());
+        TaikhoanDTO taikhoanDTO = taikhoanDAO.LayTKTheoMa(matk);
 
         if(val.isEmpty()){
             TXTL_addacc_SDT.setError(getResources().getString(R.string.not_empty));
@@ -243,7 +253,7 @@ public class AddAccActivity extends AppCompatActivity implements View.OnClickLis
         }else if(val.length() != 10){
             TXTL_addacc_SDT.setError("Số điện thoại không hợp lệ!");
             return false;
-        } else if (taikhoanDAO.KiemTraSĐT(val)) {
+        } else if (taikhoanDAO != null && !val.equals(taikhoanDTO.getSDT()) && taikhoanDAO.KiemTraSĐT(val)) {
             TXTL_addacc_SDT.setError("Số điện thoại đã tồn tại!");
             return false;
         } else {

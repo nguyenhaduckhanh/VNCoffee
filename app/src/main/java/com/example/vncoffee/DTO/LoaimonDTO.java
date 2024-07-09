@@ -2,14 +2,13 @@ package com.example.vncoffee.DTO;
 
 public class LoaimonDTO {
     int MALOAI;
-    String TENLOAI;
-    byte[] ANH;
+    String TENLOAI,ANH;
 
-    public byte[] getANH() {
+    public String getANH() {
         return ANH;
     }
 
-    public void setANH(byte[] ANH) {
+    public void setANH(String ANH) {
         this.ANH = ANH;
     }
 
