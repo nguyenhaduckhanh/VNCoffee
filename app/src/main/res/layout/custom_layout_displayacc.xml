@@ -21,8 +21,8 @@
             android:layout_height="90dp"
             android:src="@drawable/ic_baseline_account_circle_24"
             android:layout_centerVertical="true"
-            app:civ_circle_background_color="@color/black"
-            app:civ_border_width="10dp"
+            app:civ_circle_background_color="@color/black50"
+            app:civ_border_width="0dp"
             />
 
         <LinearLayout

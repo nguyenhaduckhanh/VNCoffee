@@ -62,15 +62,18 @@
         <Button
             android:id="@+id/btn_custompayment_XoaMon"
             android:layout_width="0dp"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_weight="0.8"
             android:layout_gravity="center"
             android:gravity="center"
-            android:paddingRight="5dp"
+            android:minWidth="50dp"
+            android:minHeight="30dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:background="@drawable/corner_border_primary"
             android:text="Xóa"
             android:textColor="@color/white"
-            android:textSize="13sp"
+            android:textSize="12sp"
             />
 
 
