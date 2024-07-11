@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:text="Admin"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/txt_customacc_TenQuyen"
@@ -48,7 +48,7 @@
                 android:gravity="center"
                 android:text="Quản Lý"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/txt_customacc_SDT"
@@ -56,16 +56,16 @@
                 android:layout_height="wrap_content"
                 android:text="SĐT: 0373933507"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/txt_customacc_Email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
+                android:gravity="left"
                 android:text="admin@gmail.com"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
